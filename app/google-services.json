@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "95628118933",
+    "firebase_url": "https://kissapp-bf7b2.firebaseio.com",
+    "project_id": "kissapp-bf7b2",
+    "storage_bucket": "kissapp-bf7b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95628118933:android:31c029c9c1b01e3cc0849c",
+        "android_client_info": {
+          "package_name": "com.kissapp.kissasian"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "95628118933-pa3ak3vtd00j2h6bvaulrpf59kqedbk4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsKcFNn-rdM8qOW1wpDOQwLa-MDrSTtnU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "95628118933-pa3ak3vtd00j2h6bvaulrpf59kqedbk4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
