@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.kissapp.kissasian"
+    package="com.kissasianapp.kissasian"
     tools:ignore="MissingLeanbackLauncher">
 
     <uses-feature
@@ -19,7 +19,7 @@
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
 
     <application
-        android:name="com.kissapp.kissasian.cn_utl.MyAppClass"
+        android:name="com.kissasianapp.kissasian.ka_utl.MyAppClass"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -28,7 +28,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.kissapp.kissasian.WebViewActivity"
+        <activity android:name="com.kissasianapp.kissasian.WebViewActivity"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme"></activity>
 
@@ -43,49 +43,49 @@
             android:value="com.google.android.exoplayer2.ext.cast.DefaultCastOptionsProvider" />
 
         <activity
-            android:name="com.kissapp.kissasian.TermsActivity"
+            android:name="com.kissasianapp.kissasian.TermsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.kissapp.kissasian.ReplyActivity"
+            android:name="com.kissasianapp.kissasian.ReplyActivity"
             android:label="@string/title_activity_reply"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.kissapp.kissasian.ProfileActivity"
+            android:name="com.kissasianapp.kissasian.ProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.kissapp.kissasian.PassResetActivity"
+            android:name="com.kissasianapp.kissasian.PassResetActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.kissapp.kissasian.SearchActivity"
+            android:name="com.kissasianapp.kissasian.SearchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.kissapp.kissasian.SignUpActivity"
+            android:name="com.kissasianapp.kissasian.SignUpActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.kissapp.kissasian.LoginActivity"
+            android:name="com.kissasianapp.kissasian.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.kissapp.kissasian.DetailsActivity"
+            android:name="com.kissasianapp.kissasian.DetailsActivity"
             android:configChanges="screenLayout|screenSize|orientation"
             android:label="@string/title_activity_details"
             android:theme="@style/AppTheme.NoActionBar" /> <!-- android:configChanges="screenLayout|screenSize|orientation" -->
         <activity
-            android:name="com.kissapp.kissasian.MainActivity"
+            android:name="com.kissasianapp.kissasian.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.kissapp.kissasian.SettingsActivity"
+            android:name="com.kissasianapp.kissasian.SettingsActivity"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.kissapp.kissasian.SplashscreenActivity"
+            android:name="com.kissasianapp.kissasian.SplashscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme">
@@ -96,19 +96,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.kissapp.kissasian.ItemMovieActivity"
+            android:name="com.kissasianapp.kissasian.ItemMovieActivity"
             android:label="@string/title_activity_item_show"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.kissapp.kissasian.ItemTVActivity"
+            android:name="com.kissasianapp.kissasian.ItemTVActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
         <activity
-            android:name="com.kissapp.kissasian.ItemSeriesActivity"
+            android:name="com.kissasianapp.kissasian.ItemSeriesActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Nobar" />
-        <activity android:name="com.kissapp.kissasian.UpdateActivity"/>
+        <activity android:name="com.kissasianapp.kissasian.UpdateActivity"/>
     </application>
 
 </manifest>
