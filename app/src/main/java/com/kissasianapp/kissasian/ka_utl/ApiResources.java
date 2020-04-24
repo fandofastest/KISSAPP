@@ -4,7 +4,7 @@ import com.kissasianapp.kissasian.Config;
 
 public class ApiResources {
 
-    public static String admobStatus="0",adMobBannerId="null", adMobInterstitialId="null", adMobPublisherId="null";
+    public static String admobStatus="0",adMobBannerId="null", adMobInterstitialId="null", adMobPublisherId="null",status_intersplash="0";
     public static String fanadStatus="0",fanBannerid="null", faninter="null";
     public static String statusapp="0",apk="null";
     public static String statusnotif="0",judulstatus="null",pesan="null",foto="null",icon="null",apknew="null";

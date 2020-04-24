@@ -220,6 +220,8 @@ public class SplashscreenActivity extends AppCompatActivity {
                     ApiResources.adMobBannerId = jsonObject.getString("admob_banner_ads_id");
                     ApiResources.adMobInterstitialId = jsonObject.getString("admob_interstitial_ads_id");
                     ApiResources.adMobPublisherId = jsonObject.getString("admob_publisher_id");
+                    ApiResources.status_intersplash = jsonObject.getString("status_intersplash");
+
 
 //                    interadmob=jsonObject.getString("admob_interstitial_ads_id");
 
@@ -259,8 +261,20 @@ public class SplashscreenActivity extends AppCompatActivity {
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                loadinter(fanInterid);
                                 progresly.setVisibility(View.VISIBLE);
+                                if (ApiResources.status_intersplash.equals("1")){
+                                    loadinter(fanInterid);
+
+
+                                }else {
+                                    progresly.setVisibility(View.GONE);
+
+                                    Intent intent = new Intent(SplashscreenActivity.this,MainActivity.class);
+
+                                    startActivity(intent);
+                                }
+
+
                             }
                         });
                     }
