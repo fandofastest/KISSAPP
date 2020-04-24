@@ -10,14 +10,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.balysv.materialripple.MaterialRippleLayout;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
 import com.kissasianapp.kissasian.DetailsActivity;
+import com.kissasianapp.kissasian.MainActivity;
 import com.kissasianapp.kissasian.R;
 import com.kissasianapp.kissasian.ka_model.CommonModels;
+import com.kissasianapp.kissasian.ka_utl.ApiResources;
 import com.kissasianapp.kissasian.ka_utl.ItemAnimation;
 import com.squareup.picasso.Picasso;
+import com.startapp.android.publish.adsCommon.StartAppAd;
+import com.startapp.android.publish.adsCommon.adListeners.AdDisplayListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.kissasianapp.kissasian.ka_utl.MyAppClass.getContext;
 
 public class CommonGridAdapter extends RecyclerView.Adapter<CommonGridAdapter.OriginalViewHolder> {
 
@@ -26,6 +34,8 @@ public class CommonGridAdapter extends RecyclerView.Adapter<CommonGridAdapter.Or
 
     private int lastPosition = -1;
     private boolean on_attach = true;
+    private com.google.android.gms.ads.InterstitialAd mInterstitialAd;
+
     private int animation_type = 2;
 
 
@@ -57,11 +67,22 @@ public class CommonGridAdapter extends RecyclerView.Adapter<CommonGridAdapter.Or
         holder.lyt_parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (ctx instanceof MainActivity) {
+                    ((MainActivity)ctx).showloading();
+                }
 
-                Intent intent=new Intent(ctx,DetailsActivity.class);
-                intent.putExtra("vType",obj.getVideoType());
-                intent.putExtra("id",obj.getId());
-                ctx.startActivity(intent);
+                if (ApiResources.admobStatus.equals("1")){
+                    loadads(obj);
+                }
+
+                else {
+
+                    Intent intent = new Intent(ctx, DetailsActivity.class);
+                    intent.putExtra("vType", obj.getVideoType());
+                    intent.putExtra("id", obj.getId());
+                    ctx.startActivity(intent);
+
+                }
 
             }
         });
@@ -120,6 +141,132 @@ public class CommonGridAdapter extends RecyclerView.Adapter<CommonGridAdapter.Or
             ItemAnimation.animate(view, on_attach ? position : -1, animation_type);
             lastPosition = position;
         }
+    }
+
+    public void loadads(CommonModels obj){
+
+
+
+        mInterstitialAd = new com.google.android.gms.ads.InterstitialAd(ctx);
+        mInterstitialAd.setAdUnitId(ApiResources.adMobInterstitialId);
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+
+                if (ctx instanceof MainActivity) {
+                    ((MainActivity)ctx).hideoading();
+                }
+
+
+                mInterstitialAd.show();
+
+                // Code to be executed when an ad finishes loading.
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+
+                StartAppAd startAppAd = new StartAppAd(getContext());
+                startAppAd.showAd(new AdDisplayListener() {
+                    @Override
+                    public void adHidden(com.startapp.android.publish.adsCommon.Ad ad) {
+                        if (ctx instanceof MainActivity) {
+                            ((MainActivity)ctx).hideoading();
+                        }
+
+                        Intent intent=new Intent(ctx, DetailsActivity.class);
+                        intent.putExtra("vType",obj.getVideoType());
+                        intent.putExtra("id",obj.getId());
+
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        ctx.startActivity(intent);
+
+                    }
+
+                    @Override
+                    public void adDisplayed(com.startapp.android.publish.adsCommon.Ad ad) {
+
+                    }
+
+                    @Override
+                    public void adClicked(com.startapp.android.publish.adsCommon.Ad ad) {
+                        if (ctx instanceof MainActivity) {
+                            ((MainActivity)ctx).hideoading();
+                        }
+                        Intent intent=new Intent(ctx, DetailsActivity.class);
+                        intent.putExtra("vType",obj.getVideoType());
+                        intent.putExtra("id",obj.getId());
+
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        ctx.startActivity(intent);
+
+
+                    }
+
+                    @Override
+                    public void adNotDisplayed(com.startapp.android.publish.adsCommon.Ad ad) {
+
+                        if (ctx instanceof MainActivity) {
+                            ((MainActivity)ctx).hideoading();
+                        }
+
+                        Intent intent=new Intent(ctx, DetailsActivity.class);
+                        intent.putExtra("vType",obj.getVideoType());
+                        intent.putExtra("id",obj.getId());
+
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        ctx.startActivity(intent);
+
+
+                    }
+                })   ;
+
+            }
+
+            @Override
+            public void onAdOpened() {
+                if (ctx instanceof MainActivity) {
+                    ((MainActivity)ctx).hideoading();
+                }
+
+                // Code to be executed when the ad is displayed.
+            }
+
+            @Override
+            public void onAdClicked() {
+                if (ctx instanceof MainActivity) {
+                    ((MainActivity)ctx).hideoading();
+                }
+
+
+                // Code to be executed when the user clicks on an ad.
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+            }
+
+            @Override
+            public void onAdClosed() {
+                if (ctx instanceof MainActivity) {
+                    ((MainActivity)ctx).hideoading();
+                }
+
+                Intent intent=new Intent(ctx, DetailsActivity.class);
+                intent.putExtra("vType",obj.getVideoType());
+                intent.putExtra("id",obj.getId());
+
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                ctx.startActivity(intent);
+
+
+                // Code to be executed when the interstitial ad is closed.
+            }
+        });
+
     }
 
 }
