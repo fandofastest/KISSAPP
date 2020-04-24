@@ -39,6 +39,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private String navMenuStyle;
 
     private Switch themeSwitch;
+    public LinearLayout progresly;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +100,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        progresly=findViewById(R.id.llProgressBar);
+
 
         navMenuStyle = Constants.NAV_MENU_STYLE;
 
@@ -334,6 +338,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             dialognew();
         }
 
+
     }
 
     @Override
@@ -341,6 +346,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_action, menu);
         return true;
+    }
+
+
+
+    public  void showloading(){
+        progresly.setVisibility(View.VISIBLE);
+
+
+
+    }
+
+    public  void hideoading(){
+        progresly.setVisibility(View.GONE);
+
+
+
     }
 
 
@@ -554,7 +575,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         alertDialog.show();
     }
-
 
 
 
